@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM python:3.14-slim
 
 # ffmpeg encodes the MP3 segments; nothing else native is needed.
 RUN apt-get update \
