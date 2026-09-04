@@ -1,0 +1,5 @@
+*
+!pyproject.toml
+!uv.lock
+!narrator/
+narrator/__pycache__/

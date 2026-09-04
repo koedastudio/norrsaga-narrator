@@ -1,0 +1,39 @@
+name: Bug report
+description: Something broke
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Narrator version
+      description: Git tag or commit, and whether you run it via docker compose.
+      placeholder: 0.1.0, docker compose
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Audiobookshelf and Kokoro versions
+      placeholder: ABS 2.36.0, kokoro-fastapi-cpu latest
+    validations:
+      required: true
+  - type: input
+    id: client
+    attributes:
+      label: Player
+      description: The app or player consuming the stream.
+      placeholder: Norrsaga iOS 1.2, ffplay, ...
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Steps to reproduce, what you expected, and what you got instead.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: >-
+        Optional. `docker compose logs narrator` excerpts. Redact server
+        addresses and tokens.

@@ -1,0 +1,24 @@
+# Narrator + Kokoro TTS. Copy .env.example to .env first.
+services:
+  kokoro:
+    image: ghcr.io/remsky/kokoro-fastapi-cpu:latest
+    restart: unless-stopped
+    expose:
+      - "8880"  # internal only: the narrator is Kokoro's sole client
+
+  narrator:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      KOKORO_URL: http://kokoro:8880
+      CACHE_DIR: /cache
+    volumes:
+      - narrator-cache:/cache
+    ports:
+      - "13379:13379"  # put TLS in front; use "127.0.0.1:13379:13379" behind a local reverse proxy
+    depends_on:
+      - kokoro
+
+volumes:
+  narrator-cache:
