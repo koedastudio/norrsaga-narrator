@@ -7,7 +7,8 @@ services:
       - "8880"  # internal only: the narrator is Kokoro's sole client
 
   narrator:
-    build: .
+    image: ghcr.io/koedastudio/norrsaga-narrator:latest
+    build: .  # drop this line to use the prebuilt image instead of building
     restart: unless-stopped
     env_file: .env
     environment:

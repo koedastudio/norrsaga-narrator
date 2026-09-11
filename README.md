@@ -26,6 +26,10 @@ docker compose up -d --build
 curl -s localhost:13379/healthz
 ```
 
+A prebuilt multi-arch image is published on every release as
+`ghcr.io/koedastudio/norrsaga-narrator` (`:latest`, `:0.1`, `:edge` for main).
+Remove the `build: .` line in `docker-compose.yml` to pull it instead of building.
+
 Two things to get right:
 
 - **`ABS_TOKEN` must belong to the same ABS user the app signs in as.** Progress
